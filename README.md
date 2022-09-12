@@ -124,9 +124,6 @@ MLFlow, an open source machine learning tracking library that Databricks comes e
 
 <!-- PROJECT FOOTER -->
 <h2 id="footer"> Project Details </h2>
-<h3 id="license"> License </h3>
-
-Please read our [license document][license-url] for more information.
 
 <h3 id="Contact"> Contact </h3>
 
