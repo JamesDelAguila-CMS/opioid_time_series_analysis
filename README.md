@@ -1,6 +1,13 @@
 # opioid_time_series_analysis
 https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=APP&title=OEDA+AI+Pilot+Team+Page
 
+## Table of Contents
+
+1. Data
+2. Baseline Models
+3. Experimental Models
+
+
 ## Table Preprocessing
 
 This README file describes the data preprocessing performed
