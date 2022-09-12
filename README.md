@@ -1,7 +1,8 @@
 # opioid_time_series_analysis
-https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=APP&title=OEDA+AI+Pilot+Team+Page
 
 The Office of Enterprise Data and Analytics investigated applications of multivariate time-series classification (MTSC) to predict opioid-related emergency department visits, and further understand factors such as: timing of opioid type/dose amount/fill dates, timing of medication for opioid use disorder (MOUD), as well potential non-time-series contributors, such as beneficiary demographics, presence of chronic conditions, and other important confounding factors.
+
+Confluence Page: https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=APP&title=OEDA+AI+Pilot+Team+Page
 
 ## Table of Contents
 
