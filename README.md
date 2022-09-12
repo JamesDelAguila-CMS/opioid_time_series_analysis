@@ -11,7 +11,7 @@ Confluence Page: https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=AP
 2. Baseline Models
 3. Experimental Models
 
-## Data
+## 1. Data
 data/make_spark_data_table.py processes claims/beneficiary/other data into a time-series panel format, which awaits further preprocessing.
 
 ### Table Preprocessing
@@ -125,6 +125,7 @@ MLFlow, an open source machine learning tracking library that Databricks comes e
  - utils/evaluation_pipeline.ipynb
     > This notebook contains the evaluation pipeline that we used to test the model. It derives and saves metrics relevant to performance. It also contains our subgroup analysis. 
 
+### 2. Baseline Models
 
 
 <!-- PROJECT FOOTER -->
