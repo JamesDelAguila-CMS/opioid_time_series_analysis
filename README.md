@@ -11,16 +11,10 @@ Confluence Page: https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=AP
 2. Baseline Models
 3. Experimental Models
 
+## Data
+data/make_spark_data_table.py processes claims/beneficiary/other data into a time-series panel format, which awaits further preprocessing.
 
-## Table Preprocessing
-
-This README file describes the data preprocessing performed
-as part of the OEDA AI Explorers pilot project, and is intended to
-accompany the tables_preprocess_updated notebook 
-originally developed in the CCW VRDC environment. It depends on 
-the data tables and resources deployed there.
-
-### Preprocessing Overview
+### Table Preprocessing
 
 Preprocessing consists of several steps:
 - One-hot encoding categorical variables (see the one_hot_encoder notebook) -- these tables are also saved for use as non-resampled inputs
