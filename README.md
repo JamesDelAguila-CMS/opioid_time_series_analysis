@@ -1,7 +1,7 @@
 # opioid_time_series_analysis
 https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=APP&title=OEDA+AI+Pilot+Team+Page
 
-# Table Preprocessing
+## Table Preprocessing
 
 This README file describes the data preprocessing performed
 as part of the OEDA AI Explorers pilot project, and is intended to
@@ -9,7 +9,7 @@ accompany the tables_preprocess_updated notebook
 originally developed in the CCW VRDC environment. It depends on 
 the data tables and resources deployed there.
 
-## Preprocessing Overview
+### Preprocessing Overview
 
 Preprocessing consists of several steps:
 - One-hot encoding categorical variables (see the one_hot_encoder notebook) -- these tables are also saved for use as non-resampled inputs
@@ -19,7 +19,7 @@ Preprocessing consists of several steps:
 
 Each of these steps is described in more detail below.
 
-## One-hot encoding
+### One-hot encoding
 
 The first cells run (import) the one_hot_encoder notebook to use a
 consistent one-hot encoding method and ordering of fields. The details
@@ -33,7 +33,7 @@ After defining the encoder class, we apply it to our two input datasets
 (the "TSFRESH" and "Abbridged TS Features" datasets) to produce one-hot
 encoded DataFrames, which are then saved as Databricks tables. 
 
-## SMOTE Oversampling / ENN and Tomek Undersampling
+### SMOTE Oversampling / ENN and Tomek Undersampling
 
 To correct for class imbalance, we apply SMOTE. Because our dataset includes many categorical variables, we can't apply plain SMOTE (or Approx-SMOTE, in its current implementation). We use SMOTENC from the `imbalanced-learn` library, which is designed to handle a mix of categorical and numeric variables.
 
@@ -86,14 +86,7 @@ One variation that was not tested due to time constraints is undersampling
   Missing license
   Needs an editting pass
 -->
-<br />
-<p align="center">
-  <img src="./data/kungfuai_logo.png" alt="KUNGFU.AI" width="200">
-  <h3 align="center">KUNGFU.AI Project Template</h3>
-  <p align="center">
-    CMS Opioid Recidivism
-    <br/>
-  </p>
+
 </p>
 
 <!-- ABOUT THE PROJECT -->
