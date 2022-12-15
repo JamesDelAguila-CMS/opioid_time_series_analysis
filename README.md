@@ -18,7 +18,8 @@ The underlying source of data are CCW tables, including the Enhanced Longitudina
 ### Table Preprocessing
 
 Preprocessing consists of several steps:
-- Convert claim-level data into a time-series panel format, which awaits further preprocessing (data/make_spark_data_table.py). 
+- Convert claim-level data into a time-series panel format, which awaits further preprocessing (data/make_spark_data_table.py).
+- Coding of continuous time-series values, using the TSFRESH approach. 
 - One-hot encoding categorical variables (see the one_hot_encoder notebook) -- these tables are also saved for use as non-resampled inputs
 - (optionally) SMOTE oversampling
   - (optionally) Undersampling using either the SMOTEENN (edited nearest neighbor) or Tomek methods.
@@ -26,10 +27,14 @@ Preprocessing consists of several steps:
 
 Each of these steps is described in more detail below.
 
-### Timer-series Panel Format
+#### Timer-series panel format
 Most time-series algorithms require specific table formats. Panel data consists of a table with 1 row per beneficiary and 1 column for each variable which themselves consist arrays with each element corresponding to a value during a particular time period (in our case, daily). This project includes a custom set of functions to build the panel format from line-level claims data.
 
-### One-hot encoding
+#### TSFRESH encoding
+
+TSFRESH is a python package that automatically calculates a large number of time series characteristics, the so called features. See https://tsfresh.readthedocs.io/en/latest/ for full documentation
+
+#### One-hot encoding
 
 The first cells run (import) the one_hot_encoder notebook to use a
 consistent one-hot encoding method and ordering of fields. The details
@@ -43,7 +48,7 @@ After defining the encoder class, we apply it to our two input datasets
 (the "TSFRESH" and "Abbridged TS Features" datasets) to produce one-hot
 encoded DataFrames, which are then saved as Databricks tables. 
 
-### SMOTE Oversampling / ENN and Tomek Undersampling
+#### SMOTE Oversampling / ENN and Tomek Undersampling
 
 To correct for class imbalance, we have created additional SMOTE datasets. Because our dataset includes many categorical variables, we can't apply plain SMOTE (or Approx-SMOTE, in its current implementation). We use SMOTENC from the `imbalanced-learn` library, which is designed to handle a mix of categorical and numeric variables.
 
