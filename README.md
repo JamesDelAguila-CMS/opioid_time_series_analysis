@@ -77,7 +77,9 @@ be found in the project technical report.
     > A notebook which uses the SMOTE version of the dataset, trains a regularized logistic regression model using the TSFRESH set of feature characteristics, performs hyperparameter tuning, tests the resulting model on a validation 'hold-out' sample, and logs the result via MLFLOW
  
  - xgboost_models/MLFLOW_Py_DistXgboost_max_delta.py
-    > A notebook which uses the SMOTE version of the dataset, trains a regularized logistic regression model using the TSFRESH set of feature characteristics, performs hyperparameter tuning, tests the resulting model on a validation 'hold-out' sample, and logs the result via MLFLOW
+    > A notebook which uses weighted observations according to class (ED visit vs. no ED visit), trains an xgboost using the TSFRESH set of feature characteristics, performs hyperparameter tuning, tests the resulting model on a validation 'hold-out' sample, and logs the result via MLFLOW
+ - xgboost_models/MLFLOW_Py_DistXgboost_abbr_ts_max_delta.py
+    > A notebook which uses weighted observations according to class (ED visit vs. no ED visit), trains an xgboost using the abbreviated set of feature characteristics, performs hyperparameter tuning, tests the resulting model on a validation 'hold-out' sample, and logs the result via MLFLOW
 
 
 
