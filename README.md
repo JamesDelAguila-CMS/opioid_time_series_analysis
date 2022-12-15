@@ -27,16 +27,16 @@ Preprocessing consists of several steps:
 
 Each of these steps is described in more detail below.
 
-#### Timer-series panel format
+#### Time-series panel format
 Most time-series algorithms require specific table formats. Panel data consists of a table with 1 row per beneficiary and 1 column for each variable which themselves consist arrays with each element corresponding to a value during a particular time period (in our case, daily). This project includes a custom set of functions to build the panel format from line-level claims data.
 
 #### TSFRESH encoding
 
-TSFRESH is a python package that automatically calculates a large number of time series characteristics, the so called features. See https://tsfresh.readthedocs.io/en/latest/ for full documentation
+TSFRESH is a python package that automatically calculates a large number of time series characteristics, the so called features. TSFRESH transformations are contained in the baseline models folder. See https://tsfresh.readthedocs.io/en/latest/ for full documentation
 
 #### One-hot encoding
 
-The first cells run (import) the one_hot_encoder notebook to use a
+In the data/one_hot_encoder notebook, the first cells run (import) the one_hot_encoder notebook to use a
 consistent one-hot encoding method and ordering of fields. The details
 of that encoder are described with it. In this notebook we use a modified
 version of the `CMSPyTorchDataset` class used by the experimental model;
