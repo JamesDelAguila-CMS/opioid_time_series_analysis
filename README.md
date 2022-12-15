@@ -11,15 +11,16 @@ Some parts of the code will be broken outside the VRDC development environment, 
 MLFlow, an open source machine learning tracking library that Databricks comes equipped with, was the backbone of our metric tracking during training. Databricks has MLFlow servers automatically setup to connect to within each instance that is provisioned for you. If you run this code outside of the Databricks environment, you will need to either edit or remove the MLFlow interaction in the training loop, or instantiate an MLFlow server yourself.
 
 ## Data
-data/make_spark_data_table.py processes claim-level data into a time-series panel format, which awaits further preprocessing. The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
+The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
 
 ### Table Preprocessing
 
 Preprocessing consists of several steps:
+- Convert claim-level data into a time-series panel format, which awaits further preprocessing (data/make_spark_data_table.py). 
 - One-hot encoding categorical variables (see the one_hot_encoder notebook) -- these tables are also saved for use as non-resampled inputs
-- SMOTE oversampling
-- (optionally) Undersampling using either the SMOTEENN (edited nearest neighbor) or Tomek methods.
-- Writing the resampled data frames to tables for reuse.
+- (optionally) SMOTE oversampling
+  - (optionally) Undersampling using either the SMOTEENN (edited nearest neighbor) or Tomek methods.
+  - Writing the resampled data frames to tables for reuse.
 
 Each of these steps is described in more detail below.
 
