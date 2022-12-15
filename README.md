@@ -62,6 +62,12 @@ be found in the project technical report.
 
 <h3 > Overview of Notebooks </h3>
 #### Baseline Model
+- TSFRESH_Spark.py
+    > A notebook which creates TSFRESH time-series characteristics, performs feature selection from amongst that set, and saves a Spark table.
+ - abbreviated_feature_extraction.py
+    > A notebook which creates an abbreviated set of feature characteristics (mean and variance over entire study period and last 30 days of study period), performs feature selection from amongst that set, and saves a Spark table.
+ - logisitic_regression/Logistic_Regression_abbr_time_series_classweights.py
+    > A notebook which weights observations according to class (ED visit vs. no ED visit), trains a regularized logistic regression model using the abbreviated set of feature characteristics, performs hyperparameter tuning, tests the resulting model on a validation 'hold-out' sample, and logs the result via MLFLOW
 
 
 #### Experimental Model
