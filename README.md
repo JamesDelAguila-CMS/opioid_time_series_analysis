@@ -10,6 +10,8 @@ Some parts of the code will be broken outside the VRDC development environment, 
 
 MLFlow, an open source machine learning tracking library that Databricks comes equipped with, was the backbone of our metric tracking during training. Databricks has MLFlow servers automatically setup to connect to within each instance that is provisioned for you. If you run this code outside of the Databricks environment, you will need to either edit or remove the MLFlow interaction in the training loop, or instantiate an MLFlow server yourself.
 
+For access to production code in the VRDC, contact James DelAguila @ james.delaguila@cms.hhs.gov or Keri Apostle @ keri.apostle@cms.hhs.gov.
+
 ## Data
 The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
 
@@ -23,6 +25,9 @@ Preprocessing consists of several steps:
   - Writing the resampled data frames to tables for reuse.
 
 Each of these steps is described in more detail below.
+
+### Timer-series Panel Format
+Most time-series algorithms require specific table formats. Panel data consists of a table with 1 row per beneficiary and 1 column for each variable which themselves consist arrays with each element corresponding to a value during a particular time period (in our case, daily). This project includes a custom set of functions to build the panel format from line-level claims data.
 
 ### One-hot encoding
 
