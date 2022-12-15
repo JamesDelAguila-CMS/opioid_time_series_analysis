@@ -11,7 +11,7 @@ Some parts of the code will be broken outside the VRDC development environment, 
 MLFlow, an open source machine learning tracking library that Databricks comes equipped with, was the backbone of our metric tracking during training. Databricks has MLFlow servers automatically setup to connect to within each instance that is provisioned for you. If you run this code outside of the Databricks environment, you will need to either edit or remove the MLFlow interaction in the training loop, or instantiate an MLFlow server yourself.
 
 ## Data
-data/make_spark_data_table.py processes claims/beneficiary/other data into a time-series panel format, which awaits further preprocessing. The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
+data/make_spark_data_table.py processes claim-level data into a time-series panel format, which awaits further preprocessing. The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
 
 ### Table Preprocessing
 
