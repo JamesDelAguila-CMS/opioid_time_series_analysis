@@ -1,18 +1,30 @@
-# Under Construction
 # opioid_time_series_analysis
 
 The Office of Enterprise Data and Analytics investigated applications of multivariate time-series classification (MTSC) to predict opioid-related emergency department visits, and further understand factors such as: timing of opioid type/dose amount/fill dates, timing of medication for opioid use disorder (MOUD), as well potential non-time-series contributors, such as beneficiary demographics, presence of chronic conditions, and other important confounding factors.
 
 Confluence Page: https://confluenceent.cms.gov/pages/viewpage.action?spaceKey=APP&title=OEDA+AI+Pilot+Team+Page
 
-## Table of Contents
+## Data
+data/make_spark_data_table.py processes claims/beneficiary/other data into a time-series panel format, which awaits further preprocessing. The underlying source of data are CCW tables, including the Enhanced Longitudinal Database (ELDB), Geographic Variation Database (GVDB), Chronic Conditions tables, and Geographically-Based Indices of Health (GBIH).
 
-1. Data
-2. Baseline Models
-3. Experimental Models
+<h3 > Overview of Notebooks </h3>
 
-## 1. Data
-data/make_spark_data_table.py processes claims/beneficiary/other data into a time-series panel format, which awaits further preprocessing.
+ - training_with_pytorch_dataloader_main.ipynb
+    > The training notebook that launches the training loop, imports code, and instantiates hyperparameters.
+ - training_with_pytorch_dataloader_main_jw.ipynb
+    > A secondary training notebook to persist alternative training runs or to schedule jobs with on the Databricks environment. Some hyperparameters or even small bits of code could be different, but the core training loop and goal of this notebook is the same as training_with_pytorch_dataloader_main.ipynb
+ - feature_representation_exploration.ipynb
+    > This notebook contains code for visualizing three dimensional representations of data that the model learns during training. 
+ - utils/prep_data_from_spark.ipynb
+    > This notebook contains functions for querying spark and converting it into a format we can use in a training, validation, and test set.
+ - utils/model_setup.ipynb
+    > This notebook contains python code pertaining to the instantiation of the model. It is mostly executed in the training notebooks where it is imported.
+ - utils/dataloader_setup.ipynb
+    > This notebook contains python code that's needed to setup dataset and dataloader for the training. It is mostly executed in the training notebooks where it is imported. 
+ - utils/evaluation_pipeline.ipynb
+    > This notebook contains the evaluation pipeline that we used to test the model. It derives and saves metrics relevant to performance. It also contains our subgroup analysis. 
+
+
 
 ### Table Preprocessing
 
@@ -40,7 +52,7 @@ encoded DataFrames, which are then saved as Databricks tables.
 
 ### SMOTE Oversampling / ENN and Tomek Undersampling
 
-To correct for class imbalance, we apply SMOTE. Because our dataset includes many categorical variables, we can't apply plain SMOTE (or Approx-SMOTE, in its current implementation). We use SMOTENC from the `imbalanced-learn` library, which is designed to handle a mix of categorical and numeric variables.
+To correct for class imbalance, we have created additional SMOTE datasets. Because our dataset includes many categorical variables, we can't apply plain SMOTE (or Approx-SMOTE, in its current implementation). We use SMOTENC from the `imbalanced-learn` library, which is designed to handle a mix of categorical and numeric variables.
 
 We also optionally apply the Tomek's Links or ENN (Edited Nearest Neighbor) 
 undersampling methods to remove samples from the majority class. They have 
@@ -107,25 +119,6 @@ These instructions will give you an overall understanding of the codebase we dev
 Some parts of the code will be broken outside the VRDC development environment, such as references to absolute filepaths or queries to the spark environment. This is expected, as the code here is meant to serve as a log of our work as well as inspiration for future work.
 
 MLFlow, an open source machine learning tracking library that Databricks comes equipped with, was the backbone of our metric tracking during training. Databricks has MLFlow servers automatically setup to connect to within each instance that is provisioned for you. If you run this code outside of the Databricks environment, you will need to either edit or remove the MLFlow interaction in the training loop, or instantiate an MLFlow server yourself.
-
-<h3 > Overview of Notebooks </h3>
-
- - training_with_pytorch_dataloader_main.ipynb
-    > The training notebook that launches the training loop, imports code, and instantiates hyperparameters.
- - training_with_pytorch_dataloader_main_jw.ipynb
-    > A secondary training notebook to persist alternative training runs or to schedule jobs with on the Databricks environment. Some hyperparameters or even small bits of code could be different, but the core training loop and goal of this notebook is the same as training_with_pytorch_dataloader_main.ipynb
- - feature_representation_exploration.ipynb
-    > This notebook contains code for visualizing three dimensional representations of data that the model learns during training. 
- - utils/prep_data_from_spark.ipynb
-    > This notebook contains functions for querying spark and converting it into a format we can use in a training, validation, and test set.
- - utils/model_setup.ipynb
-    > This notebook contains python code pertaining to the instantiation of the model. It is mostly executed in the training notebooks where it is imported.
- - utils/dataloader_setup.ipynb
-    > This notebook contains python code that's needed to setup dataset and dataloader for the training. It is mostly executed in the training notebooks where it is imported. 
- - utils/evaluation_pipeline.ipynb
-    > This notebook contains the evaluation pipeline that we used to test the model. It derives and saves metrics relevant to performance. It also contains our subgroup analysis. 
-
-### 2. Baseline Models
 
 
 <!-- PROJECT FOOTER -->
