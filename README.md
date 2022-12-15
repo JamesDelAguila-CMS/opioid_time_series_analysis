@@ -19,7 +19,7 @@ The underlying source of data are CCW tables, including the Enhanced Longitudina
 
 Preprocessing consists of several steps:
 - Convert claim-level data into a time-series panel format, which awaits further preprocessing (data/make_spark_data_table.py).
-- Coding of continuous time-series values, using the TSFRESH approach. 
+- Coding of continuous time-series values, using the TSFRESH approach or an abridged set of custom time-series features. 
 - One-hot encoding categorical variables (see the one_hot_encoder notebook) -- these tables are also saved for use as non-resampled inputs
 - (optionally) SMOTE oversampling
   - (optionally) Undersampling using either the SMOTEENN (edited nearest neighbor) or Tomek methods.
@@ -36,9 +36,9 @@ TSFRESH is a python package that automatically calculates a large number of time
 
 #### One-hot encoding
 
-In the data/one_hot_encoder notebook, the first cells run (import) the one_hot_encoder notebook to use a
+In the data/tables_preprocess_updated notebook, the first cells run (import) the one_hot_encoder notebook to use a
 consistent one-hot encoding method and ordering of fields. The details
-of that encoder are described with it. In this notebook we use a modified
+of that encoder are described within. In this notebook we use a modified
 version of the `CMSPyTorchDataset` class used by the experimental model;
 its main variation is that it produces a Pandas DataFrame instead of
 a PyTorch vector dataset. This simplifies the remaining preprocessing
@@ -61,7 +61,10 @@ More details of the SMOTE/SMOTE-NC, Tomek's Links, and ENN methods can
 be found in the project technical report.
 
 <h3 > Overview of Notebooks </h3>
+#### Baseline Model
 
+
+#### Experimental Model
  - training_with_pytorch_dataloader_main.ipynb
     > The training notebook that launches the training loop, imports code, and instantiates hyperparameters.
  - training_with_pytorch_dataloader_main_jw.ipynb
