@@ -84,7 +84,7 @@ be found in the project technical report.
 
 
 #### Experimental Model
- - training_with_pytorch_dataloader_main.py
+ - training_main.py
     > The training notebook that launches the training loop, imports code, and instantiates hyperparameters.
  - training_with_pytorch_dataloader_main_jw.py
     > A secondary training notebook to persist alternative training runs or to schedule jobs with on the Databricks environment. Some hyperparameters or even small bits of code could be different, but the core training loop and goal of this notebook is the same as training_with_pytorch_dataloader_main.ipynb
